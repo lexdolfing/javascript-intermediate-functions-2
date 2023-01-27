@@ -9,8 +9,24 @@
 // getEmailDomain("t.mellink@novi.nl") geeft novi.nl
 // getEmailDomain("a.wiersma@outlook.com") geeft outlook.com
 
+// optie 1
+function getEmailDomain(emailAddress){
 
+    const split = emailAddress.split("@");
+    const domainName = split[1];
+    return domainName;
+}
 
+console.log(getEmailDomain("lexdolfing@gmail.com"));
+
+// optie 2
+
+function getEmailDomain2(emailAdress){
+    const domainName = emailAdress.substring(emailAdress.indexOf("@")+1, emailAdress.length);
+    return domainName;
+}
+
+console.log(getEmailDomain2("lexdolfing@gmail.com"));
 
 /* Opdracht  2 */
 // Schrijf een functie genaamd typeOfEmail, die een emailadres verwacht. De functie checkt of het emailadres een novi domein heeft (medewerker), een novi-education domein (student), of extern domein (zoals gmail of outlook)
@@ -19,6 +35,21 @@
 // typeOfEmail("t.mellink@novi.nl") geeft geeft "Medewerker"
 // typeOfEmail("novi.nlaapjesk@outlook.com") geeft geeft "Extern" <-- deze moet het ook doen!
 // typeOfEmail("a.wiersma@outlook.com") geeft "Extern"
+
+function typeOfEmail(emailAdress){
+    // checkt of het emailadres een Novi domeinaam heeft.
+    if (emailAdress.includes("novi.nl") || emailAdress.includes("novi.com")){
+        return "medewerker";
+    } else if (emailAdress.includes("novi-education.nl")){
+        return "student";
+    } else {
+        return "extern"
+    }
+}
+
+console.log(typeOfEmail("lexdolfing@gmail.com"));
+console.log(typeOfEmail("lex.dolfing@novi-education.nl"));
+console.log(typeOfEmail("lexdolfing@novi.nl"));
 
 
 
@@ -34,3 +65,13 @@
 // checkEmailValidity("n.eekenanovi.nl") geeft false - want geen @
 // checkEmailValidity("n.eeken@novinl.") geeft false - want de punt mag niet als laatst
 // checkEmailValidity("tessmellink@novi,nl") geeft false - want er staat een komma in
+
+function checkEmailValidity(emailAdress){
+    if (emailAdress.includes("@") && emailAdress.includes(".") && emailAdress.includes(",")=== false){
+        return true;
+    } else {
+        return false;
+    }
+}
+
+console.log(checkEmailValidity("lexdolfing@gmail.com"));
